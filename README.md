@@ -1,5 +1,6 @@
 # LibX
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 One timer interrupt round-robin multitask library for mobile robots.
 
@@ -7,6 +8,9 @@ One timer interrupt round-robin multitask library for mobile robots.
 
 [Didel](http://www.didel.com)
 
+=======
+One timer interrupt round-robin multitask library for mobile robots
+>>>>>>> parent of fe9b286... Ajout logo
 =======
 One timer interrupt round-robin multitask library for mobile robots
 >>>>>>> parent of fe9b286... Ajout logo
