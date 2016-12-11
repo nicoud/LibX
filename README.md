@@ -1,4 +1,3 @@
-ibY is like a Meccano. You start with simple constructions, learn from examples, 
 ### LibX is like a Meccano with a set of sorted pieces and sub-assemblies. You start with simple constructions, learn from examples, progress toward complexity, and get rewarding results.
 
 The program modules are short, Arduino compatible, but they do not use Arduino libraries and specific pins.
