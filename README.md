@@ -6,15 +6,15 @@ This allows rich AtTiny applications, fast download of programs on Arduino. Also
 ### LibX may look unusual to Arduino beginners, it is indeed simple C programming that enphasize the use of `#define..` in place of `int..` and `digitalWrite..` in place of  `bitSet..`
 With Arduino, beginners are not encouraged to structure their programs; code appear as long lists of instructions, with comments on instructions and not on block of code.
 
-### Example of a LibX programs
+### Example of a LibX program
 ```
-// CoolBot1.ino 161001  2492b 46v decode G et N orders
+// CoolBot.ino 161001  decode G et N orders
 #include "DoTell.h"   // display highLow
-#include "Bips.h"
-#include "Hexo.h"
-#include "Ana4.h"
-#include "Ordres.h"
-#include "Inter.h"
+#include "Bips.h"     // ack bips
+#include "Hexo.h"     // get hexo orders
+#include "Ana4.h"     // read the 4 A/D channels
+#include "Ordres.h"   // decode Hexo orders
+#include "Inter.h"    // handle interrupts
 void setup() {                
   SetupTell();
   SetupBips ();
