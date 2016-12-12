@@ -8,7 +8,7 @@ With Arduino, beginners are not encouraged to structure their programs; code app
 
 ### Example of a LibX program
 ```
-// CoolBot.ino 161001  decode G et N orders
+// CoolBot.ino   decode G et N orders
 #include "DoTell.h"   // display highLow
 #include "Bips.h"     // ack bips
 #include "Hexo.h"     // get hexo orders
