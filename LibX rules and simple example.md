@@ -1,365 +1,103 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <meta charset="utf-8" />
-      <title>LibX rules and simple example</title>
-      <style>.markdown-preview:not([data-use-github-style]) { padding: 2em; font-size: 1.2em; color: rgb(85, 85, 85); overflow: auto; background-color: rgb(255, 255, 255); }
-.markdown-preview:not([data-use-github-style]) > :first-child { margin-top: 0px; }
-.markdown-preview:not([data-use-github-style]) h1, .markdown-preview:not([data-use-github-style]) h2, .markdown-preview:not([data-use-github-style]) h3, .markdown-preview:not([data-use-github-style]) h4, .markdown-preview:not([data-use-github-style]) h5, .markdown-preview:not([data-use-github-style]) h6 { line-height: 1.2; margin-top: 1.5em; margin-bottom: 0.5em; color: rgb(3, 3, 3); }
-.markdown-preview:not([data-use-github-style]) h1 { font-size: 2.4em; font-weight: 300; }
-.markdown-preview:not([data-use-github-style]) h2 { font-size: 1.8em; font-weight: 400; }
-.markdown-preview:not([data-use-github-style]) h3 { font-size: 1.5em; font-weight: 500; }
-.markdown-preview:not([data-use-github-style]) h4 { font-size: 1.2em; font-weight: 600; }
-.markdown-preview:not([data-use-github-style]) h5 { font-size: 1.1em; font-weight: 600; }
-.markdown-preview:not([data-use-github-style]) h6 { font-size: 1em; font-weight: 600; }
-.markdown-preview:not([data-use-github-style]) strong { color: rgb(3, 3, 3); }
-.markdown-preview:not([data-use-github-style]) del { color: rgb(126, 126, 126); }
-.markdown-preview:not([data-use-github-style]) a, .markdown-preview:not([data-use-github-style]) a code { color: rgb(0, 0, 0); }
-.markdown-preview:not([data-use-github-style]) img { max-width: 100%; }
-.markdown-preview:not([data-use-github-style]) > p { margin-top: 0px; margin-bottom: 1.5em; }
-.markdown-preview:not([data-use-github-style]) > ul, .markdown-preview:not([data-use-github-style]) > ol { margin-bottom: 1.5em; }
-.markdown-preview:not([data-use-github-style]) blockquote { margin: 1.5em 0px; font-size: inherit; color: rgb(126, 126, 126); border-color: rgb(214, 214, 214); border-width: 4px; }
-.markdown-preview:not([data-use-github-style]) hr { margin: 3em 0px; border-top: 2px dashed rgb(214, 214, 214); background: none; }
-.markdown-preview:not([data-use-github-style]) table { margin: 1.5em 0px; }
-.markdown-preview:not([data-use-github-style]) th { color: rgb(3, 3, 3); }
-.markdown-preview:not([data-use-github-style]) th, .markdown-preview:not([data-use-github-style]) td { padding: 0.66em 1em; border: 1px solid rgb(214, 214, 214); }
-.markdown-preview:not([data-use-github-style]) code { color: rgb(3, 3, 3); background-color: rgb(240, 240, 240); }
-.markdown-preview:not([data-use-github-style]) pre.editor-colors { margin: 1.5em 0px; padding: 1em; font-size: 0.92em; border-radius: 3px; background-color: rgb(245, 245, 245); }
-.markdown-preview:not([data-use-github-style]) kbd { color: rgb(3, 3, 3); border-width: 1px 1px 2px; border-style: solid; border-color: rgb(214, 214, 214) rgb(214, 214, 214) rgb(199, 199, 199); background-color: rgb(240, 240, 240); }
-.markdown-preview[data-use-github-style] { font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif; line-height: 1.6; word-wrap: break-word; padding: 30px; font-size: 16px; color: rgb(51, 51, 51); overflow: scroll; background-color: rgb(255, 255, 255); }
-.markdown-preview[data-use-github-style] > :first-child { margin-top: 0px !important; }
-.markdown-preview[data-use-github-style] > :last-child { margin-bottom: 0px !important; }
-.markdown-preview[data-use-github-style] a:not([href]) { color: inherit; text-decoration: none; }
-.markdown-preview[data-use-github-style] .absent { color: rgb(204, 0, 0); }
-.markdown-preview[data-use-github-style] .anchor { position: absolute; top: 0px; left: 0px; display: block; padding-right: 6px; padding-left: 30px; margin-left: -30px; }
-.markdown-preview[data-use-github-style] .anchor:focus { outline: none; }
-.markdown-preview[data-use-github-style] h1, .markdown-preview[data-use-github-style] h2, .markdown-preview[data-use-github-style] h3, .markdown-preview[data-use-github-style] h4, .markdown-preview[data-use-github-style] h5, .markdown-preview[data-use-github-style] h6 { position: relative; margin-top: 1em; margin-bottom: 16px; font-weight: bold; line-height: 1.4; }
-.markdown-preview[data-use-github-style] h1 .octicon-link, .markdown-preview[data-use-github-style] h2 .octicon-link, .markdown-preview[data-use-github-style] h3 .octicon-link, .markdown-preview[data-use-github-style] h4 .octicon-link, .markdown-preview[data-use-github-style] h5 .octicon-link, .markdown-preview[data-use-github-style] h6 .octicon-link { display: none; color: rgb(0, 0, 0); vertical-align: middle; }
-.markdown-preview[data-use-github-style] h1:hover .anchor, .markdown-preview[data-use-github-style] h2:hover .anchor, .markdown-preview[data-use-github-style] h3:hover .anchor, .markdown-preview[data-use-github-style] h4:hover .anchor, .markdown-preview[data-use-github-style] h5:hover .anchor, .markdown-preview[data-use-github-style] h6:hover .anchor { padding-left: 8px; margin-left: -30px; text-decoration: none; }
-.markdown-preview[data-use-github-style] h1:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h2:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h3:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h4:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h5:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h6:hover .anchor .octicon-link { display: inline-block; }
-.markdown-preview[data-use-github-style] h1 tt, .markdown-preview[data-use-github-style] h2 tt, .markdown-preview[data-use-github-style] h3 tt, .markdown-preview[data-use-github-style] h4 tt, .markdown-preview[data-use-github-style] h5 tt, .markdown-preview[data-use-github-style] h6 tt, .markdown-preview[data-use-github-style] h1 code, .markdown-preview[data-use-github-style] h2 code, .markdown-preview[data-use-github-style] h3 code, .markdown-preview[data-use-github-style] h4 code, .markdown-preview[data-use-github-style] h5 code, .markdown-preview[data-use-github-style] h6 code { font-size: inherit; }
-.markdown-preview[data-use-github-style] h1 { padding-bottom: 0.3em; font-size: 2.25em; line-height: 1.2; border-bottom: 1px solid rgb(238, 238, 238); }
-.markdown-preview[data-use-github-style] h1 .anchor { line-height: 1; }
-.markdown-preview[data-use-github-style] h2 { padding-bottom: 0.3em; font-size: 1.75em; line-height: 1.225; border-bottom: 1px solid rgb(238, 238, 238); }
-.markdown-preview[data-use-github-style] h2 .anchor { line-height: 1; }
-.markdown-preview[data-use-github-style] h3 { font-size: 1.5em; line-height: 1.43; }
-.markdown-preview[data-use-github-style] h3 .anchor { line-height: 1.2; }
-.markdown-preview[data-use-github-style] h4 { font-size: 1.25em; }
-.markdown-preview[data-use-github-style] h4 .anchor { line-height: 1.2; }
-.markdown-preview[data-use-github-style] h5 { font-size: 1em; }
-.markdown-preview[data-use-github-style] h5 .anchor { line-height: 1.1; }
-.markdown-preview[data-use-github-style] h6 { font-size: 1em; color: rgb(119, 119, 119); }
-.markdown-preview[data-use-github-style] h6 .anchor { line-height: 1.1; }
-.markdown-preview[data-use-github-style] p, .markdown-preview[data-use-github-style] blockquote, .markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol, .markdown-preview[data-use-github-style] dl, .markdown-preview[data-use-github-style] table, .markdown-preview[data-use-github-style] pre { margin-top: 0px; margin-bottom: 16px; }
-.markdown-preview[data-use-github-style] hr { height: 4px; padding: 0px; margin: 16px 0px; border: 0px none; background-color: rgb(231, 231, 231); }
-.markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol { padding-left: 2em; }
-.markdown-preview[data-use-github-style] ul.no-list, .markdown-preview[data-use-github-style] ol.no-list { padding: 0px; list-style-type: none; }
-.markdown-preview[data-use-github-style] ul ul, .markdown-preview[data-use-github-style] ul ol, .markdown-preview[data-use-github-style] ol ol, .markdown-preview[data-use-github-style] ol ul { margin-top: 0px; margin-bottom: 0px; }
-.markdown-preview[data-use-github-style] li > p { margin-top: 16px; }
-.markdown-preview[data-use-github-style] dl { padding: 0px; }
-.markdown-preview[data-use-github-style] dl dt { padding: 0px; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; }
-.markdown-preview[data-use-github-style] dl dd { padding: 0px 16px; margin-bottom: 16px; }
-.markdown-preview[data-use-github-style] blockquote { padding: 0px 15px; color: rgb(119, 119, 119); border-left: 4px solid rgb(221, 221, 221); }
-.markdown-preview[data-use-github-style] blockquote > :first-child { margin-top: 0px; }
-.markdown-preview[data-use-github-style] blockquote > :last-child { margin-bottom: 0px; }
-.markdown-preview[data-use-github-style] table { display: block; width: 100%; overflow: auto; word-break: keep-all; }
-.markdown-preview[data-use-github-style] table th { font-weight: bold; }
-.markdown-preview[data-use-github-style] table th, .markdown-preview[data-use-github-style] table td { padding: 6px 13px; border: 1px solid rgb(221, 221, 221); }
-.markdown-preview[data-use-github-style] table tr { border-top: 1px solid rgb(204, 204, 204); background-color: rgb(255, 255, 255); }
-.markdown-preview[data-use-github-style] table tr:nth-child(2n) { background-color: rgb(248, 248, 248); }
-.markdown-preview[data-use-github-style] img { max-width: 100%; box-sizing: border-box; }
-.markdown-preview[data-use-github-style] .emoji { max-width: none; }
-.markdown-preview[data-use-github-style] span.frame { display: block; overflow: hidden; }
-.markdown-preview[data-use-github-style] span.frame > span { display: block; float: left; width: auto; padding: 7px; margin: 13px 0px 0px; overflow: hidden; border: 1px solid rgb(221, 221, 221); }
-.markdown-preview[data-use-github-style] span.frame span img { display: block; float: left; }
-.markdown-preview[data-use-github-style] span.frame span span { display: block; padding: 5px 0px 0px; clear: both; color: rgb(51, 51, 51); }
-.markdown-preview[data-use-github-style] span.align-center { display: block; overflow: hidden; clear: both; }
-.markdown-preview[data-use-github-style] span.align-center > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: center; }
-.markdown-preview[data-use-github-style] span.align-center span img { margin: 0px auto; text-align: center; }
-.markdown-preview[data-use-github-style] span.align-right { display: block; overflow: hidden; clear: both; }
-.markdown-preview[data-use-github-style] span.align-right > span { display: block; margin: 13px 0px 0px; overflow: hidden; text-align: right; }
-.markdown-preview[data-use-github-style] span.align-right span img { margin: 0px; text-align: right; }
-.markdown-preview[data-use-github-style] span.float-left { display: block; float: left; margin-right: 13px; overflow: hidden; }
-.markdown-preview[data-use-github-style] span.float-left span { margin: 13px 0px 0px; }
-.markdown-preview[data-use-github-style] span.float-right { display: block; float: right; margin-left: 13px; overflow: hidden; }
-.markdown-preview[data-use-github-style] span.float-right > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: right; }
-.markdown-preview[data-use-github-style] code, .markdown-preview[data-use-github-style] tt { padding: 0.2em 0px; margin: 0px; font-size: 85%; border-radius: 3px; background-color: rgba(0, 0, 0, 0.0392157); }
-.markdown-preview[data-use-github-style] code::before, .markdown-preview[data-use-github-style] tt::before, .markdown-preview[data-use-github-style] code::after, .markdown-preview[data-use-github-style] tt::after { letter-spacing: -0.2em; content: " "; }
-.markdown-preview[data-use-github-style] code br, .markdown-preview[data-use-github-style] tt br { display: none; }
-.markdown-preview[data-use-github-style] del code { text-decoration: inherit; }
-.markdown-preview[data-use-github-style] pre > code { padding: 0px; margin: 0px; font-size: 100%; word-break: normal; white-space: pre; border: 0px; background: transparent; }
-.markdown-preview[data-use-github-style] .highlight { margin-bottom: 16px; }
-.markdown-preview[data-use-github-style] .highlight pre, .markdown-preview[data-use-github-style] pre { padding: 16px; overflow: auto; font-size: 85%; line-height: 1.45; border-radius: 3px; background-color: rgb(247, 247, 247); }
-.markdown-preview[data-use-github-style] .highlight pre { margin-bottom: 0px; word-break: normal; }
-.markdown-preview[data-use-github-style] pre { word-wrap: normal; }
-.markdown-preview[data-use-github-style] pre code, .markdown-preview[data-use-github-style] pre tt { display: inline; max-width: initial; padding: 0px; margin: 0px; overflow: initial; line-height: inherit; word-wrap: normal; border: 0px; background-color: transparent; }
-.markdown-preview[data-use-github-style] pre code::before, .markdown-preview[data-use-github-style] pre tt::before, .markdown-preview[data-use-github-style] pre code::after, .markdown-preview[data-use-github-style] pre tt::after { content: normal; }
-.markdown-preview[data-use-github-style] kbd { display: inline-block; padding: 3px 5px; font-size: 11px; line-height: 10px; color: rgb(85, 85, 85); vertical-align: middle; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187); border-radius: 3px; box-shadow: rgb(187, 187, 187) 0px -1px 0px inset; background-color: rgb(252, 252, 252); }
-.markdown-preview[data-use-github-style] a { color: rgb(51, 122, 183); }
-.markdown-preview[data-use-github-style] code { color: inherit; }
-.markdown-preview[data-use-github-style] pre.editor-colors { padding: 0.8em 1em; margin-bottom: 1em; font-size: 0.85em; border-radius: 4px; overflow: auto; }
-.scrollbars-visible-always .markdown-preview pre.editor-colors::shadow .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors::shadow .horizontal-scrollbar { visibility: hidden; }
-.scrollbars-visible-always .markdown-preview pre.editor-colors:hover::shadow .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors:hover::shadow .horizontal-scrollbar { visibility: visible; }
-.markdown-preview .task-list-item-checkbox { position: absolute; margin: 0.25em 0px 0px -1.4em; }
-.bracket-matcher .region {
-  border-bottom: 1px dotted lime;
-  position: absolute;
+Continuation of LibX README.md
+## LibX rules and simplest example
+### Let us follow 3 basic rules:
+1. Give explicit name and think "actions* and not "connections". "LedOn" and not "digitaWrite(pin,level)"
+2. Identify the required set functions and restructure while doing several tests programs
+3. Wrap in a .h reusable file the definitions, the connections, the variables and the functions for a given interface, sensor, set of functionnalities, etc..
+
+     *Not familiar with #include? - see  xx coming*
+
+## Example: a LED is On for 10 seconds when you depress a button.
+### Top-down analysis
+1. What is the algorithm? Is it a simple copy of a button on a LED? Has button action to last for several ms before getting accepted? What happens if button is depressed when LED is on? Is it ignored or it restarts the 10s delay? What happen if the button is blocked depressed?
+2. How many inputs and outputs do we need? Button is one input plus ground or plus Vcc? Is a pull-up or pull-down required? LED is connected to one output with a serial resistor or LED is shorted?
+3. Which microcontroller pins can be used, according to current and voltage limitations? Have all pins an optional pull-up resistor?
+
+### Bottom-up programming
+1. Defines the wiring and the low-level actions
+2. Write several test programs to completely understand what has to be executed. Keep the test prograns that will be useful for debugging
+3. Document the reference program that uses the created .h file, to be used or adapted when similar problems occurs.
+
+![](SimpleEx.jpg)
+#### Back to our example.
+1. A button is connected to Arduino pin 3, Gnd on other side. LED is connected to pin 13, active low (limiting resistance toward +Vcc).
+```
+#define pinBUTTON 3  // active low
+#define pinLED 13  // active low
+#define BUTTONdepressed (!digitalRead(bBUTTON)) // on if zero
+#define LedOn  digitalWrite (bLED,LOW)
+#define LedOff digitalWrite (bLED,HIGH)
+void SetupButtonLed () {
+     pinMode (pinBUTTON,INPUT);
+     pinMode (pinLED,OUTPUT);
+     digitalWrite (pinBUTTON,HIGH); // pull-up
+}
+```
+There are rules with C: variables are lower case, functions have a first letter is upper case, constants are all letters upper case. We not alway follow these rules, e.g. we feel LedOn is more readable as LEDON. What is important is to be consistant.  
+If you plan to use AVRstudio or some other IDE, you cannot use these familiar Arduino functions, which have the problem to be very slow and use ten times more memory space. But within definitions, it is acceptable and frequently it is more easy to understand the functionnality. Indeed, it is a question of habit.
+```
+#define bBUTTON 3  // PortD bit 3 active low
+#define bLED 5     // PortB bit 5 active low
+#define Buttondepressed (PIND &= (1<<bBUTTON))  
+    // or bitTest (PIND,bBUTTON)
+#define LedOn  PORTD |= (1<<bLED) // or bitSet (PORTD,bLED)
+#define LedOff digitalWrite (bLED,HIGH)// or bitClear (PORTD,bLED)
+void SetupButtonLed () {
+     DDRB &= 0b11110111;  // bit 3 button in
+     DDRD |= 0b00100000;  // bit 5 led out
+}
+```
+The definitions depends on the hardware, on your hardware. They can also depends on your habits writing code. If you are not familiar with bits, bytes and logic operations, no problem to use Arduino notations. But within the program digitalWrite and bitSet for pins must not be used for readability and portability reasons.
+
+2. Let us program the simple case, the button triggers the led.
+```
+void loop() {
+     while (!BUTTONdepressed) {} // wait
+     LedOn;
+     delay (10000);
+     LedOff;
+}
+```
+
+3. Let us create a `ButtonLed.h` "library"
+Together with the defines and setup, we create a file CopyButton.h and we can include it within programs when we need to see if the button is depressed.
+
+```
+// ButtonLed.h  *library"
+#define pinBUTTON 3  // active low
+#define pinLED 14    // active low
+#define BUTTONdepressed digitalRead(bBUTTON)
+#define LedOn  digitalWrite (bLED,LOW)
+#define LedOff digitalWrite (bLED,HIGH)
+void SetupCopyButton () {
+   pinMode (pinBUTTON,INPUT);
+   pinMode (pinLED,OUTPUT);
+}
+```
+Now a program can include ButtonLed.h and the low level definitions are hidden. Examples for Arduino and AVRstudio are given below.
+```
+// StaircaseTimer.ino  for Arduino
+#include ButtonLed.h
+setup () {
+    SetupButtonLed();
+}
+void loop () {
+    while (!BUTTONdepressed) {} // wait
+    LedOn;
+    delay (10000);
+    LedOff;    
 }
 
-.spell-check-misspelling .region {
-  border-bottom: 2px dotted rgba(255, 51, 51, 0.75);
+// StaircaseTimer.c  for AVRstudio
+#include ButtonLed.h
+void main () {
+  SetupButtonLed();
+  while (1) {
+    while (!BUTTONdepressed) {} // wait
+    LedOn;
+    delay (10000);
+    LedOff;
+  }
 }
-.spell-check-corrections {
-  width: 25em !important;
-}
-
-pre.editor-colors,
-.host {
-  background-color: #ffffff;
-  color: #555555;
-}
-pre.editor-colors .invisible-character,
-.host .invisible-character {
-  color: rgba(85, 85, 85, 0.2);
-}
-pre.editor-colors .indent-guide,
-.host .indent-guide {
-  color: rgba(85, 85, 85, 0.2);
-}
-pre.editor-colors .wrap-guide,
-.host .wrap-guide {
-  background-color: rgba(85, 85, 85, 0.2);
-}
-pre.editor-colors .gutter,
-.host .gutter {
-  color: #555555;
-  background: #ffffff;
-}
-pre.editor-colors .gutter .line-number.folded,
-.host .gutter .line-number.folded,
-pre.editor-colors .gutter .line-number:after,
-.host .gutter .line-number:after,
-pre.editor-colors .fold-marker:after,
-.host .fold-marker:after {
-  color: #e87b00;
-}
-pre.editor-colors .invisible,
-.host .invisible {
-  color: #555;
-}
-pre.editor-colors .selection .region,
-.host .selection .region {
-  background-color: #e1e1e1;
-}
-pre.editor-colors.is-focused .cursor,
-.host.is-focused .cursor {
-  border-color: #000000;
-}
-pre.editor-colors.is-focused .selection .region,
-.host.is-focused .selection .region {
-  background-color: #afc4da;
-}
-pre.editor-colors.is-focused .line-number.cursor-line-no-selection,
-.host.is-focused .line-number.cursor-line-no-selection,
-pre.editor-colors.is-focused .line.cursor-line,
-.host.is-focused .line.cursor-line {
-  background-color: rgba(255, 255, 134, 0.34);
-}
-pre.editor-colors .source.gfm,
-.host .source.gfm {
-  color: #444;
-}
-pre.editor-colors .gfm .markup.heading,
-.host .gfm .markup.heading {
-  color: #111;
-}
-pre.editor-colors .gfm .link,
-.host .gfm .link {
-  color: #888;
-}
-pre.editor-colors .gfm .variable.list,
-.host .gfm .variable.list {
-  color: #888;
-}
-pre.editor-colors .markdown .paragraph,
-.host .markdown .paragraph {
-  color: #444;
-}
-pre.editor-colors .markdown .heading,
-.host .markdown .heading {
-  color: #111;
-}
-pre.editor-colors .markdown .link,
-.host .markdown .link {
-  color: #888;
-}
-pre.editor-colors .markdown .link .string,
-.host .markdown .link .string {
-  color: #888;
-}
-.host(.is-focused) .cursor {
-  border-color: #000000;
-}
-.host(.is-focused) .selection .region {
-  background-color: #afc4da;
-}
-.host(.is-focused) .line-number.cursor-line-no-selection,
-.host(.is-focused) .line.cursor-line {
-  background-color: rgba(255, 255, 134, 0.34);
-}
-.comment {
-  color: #999988;
-  font-style: italic;
-}
-.string {
-  color: #D14;
-}
-.string .source,
-.string .meta.embedded.line {
-  color: #5A5A5A;
-}
-.string .punctuation.section.embedded {
-  color: #920B2D;
-}
-.string .punctuation.section.embedded .source {
-  color: #920B2D;
-}
-.constant.numeric {
-  color: #D14;
-}
-.constant.language {
-  color: #606aa1;
-}
-.constant.character,
-.constant.other {
-  color: #606aa1;
-}
-.constant.symbol {
-  color: #990073;
-}
-.constant.numeric.line-number.find-in-files .match {
-  color: rgba(143, 190, 0, 0.63);
-}
-.variable {
-  color: #008080;
-}
-.variable.parameter {
-  color: #606aa1;
-}
-.keyword {
-  color: #222;
-  font-weight: bold;
-}
-.keyword.unit {
-  color: #445588;
-}
-.keyword.special-method {
-  color: #0086B3;
-}
-.storage {
-  color: #222;
-}
-.storage.type {
-  color: #222;
-}
-.entity.name.class {
-  text-decoration: underline;
-  color: #606aa1;
-}
-.entity.other.inherited-class {
-  text-decoration: underline;
-  color: #606aa1;
-}
-.entity.name.function {
-  color: #900;
-}
-.entity.name.tag {
-  color: #008080;
-}
-.entity.other.attribute-name {
-  color: #458;
-  font-weight: bold;
-}
-.entity.name.filename.find-in-files {
-  color: #E6DB74;
-}
-.support.constant,
-.support.function,
-.support.type {
-  color: #458;
-}
-.support.class {
-  color: #008080;
-}
-.invalid {
-  color: #F8F8F0;
-  background-color: #00A8C6;
-}
-.invalid.deprecated {
-  color: #F8F8F0;
-  background-color: #8FBE00;
-}
-.meta.structure.dictionary.json > .string.quoted.double.json,
-.meta.structure.dictionary.json > .string.quoted.double.json .punctuation.string {
-  color: #000080;
-}
-.meta.structure.dictionary.value.json > .string.quoted.double.json {
-  color: #d14;
-}
-.meta.diff,
-.meta.diff.header {
-  color: #75715E;
-}
-.css.support.property-name {
-  font-weight: bold;
-  color: #333;
-}
-.css.constant {
-  color: #099;
-}
-.bracket-matcher .region {
-  background-color: #C9C9C9;
-  opacity: .7;
-  border-bottom: 0 none;
-}
-</style>
-  </head>
-  <body class='markdown-preview' data-use-github-style><p>Continuation of LibX README.md</p>
-<h2 id="libx-rules-and-simplest-example">LibX rules and simplest example</h2>
-<h3 id="let-us-follow-3-basic-rules-">Let us follow 3 basic rules:</h3>
-<ol>
-<li>Give explicit name and think &quot;actions* and not &quot;connections&quot;. &quot;LedOn&quot; and not &quot;digitaWrite(pin,level)&quot;</li>
-<li>Identify the required set functions and restructure while doing several tests programs</li>
-<li><p>Wrap in a .h reusable file the definitions, the connections, the variables and the functions for a given interface, sensor, set of functionnalities, etc..</p>
-<p>  <em>Not familiar with #include? - see  xx coming</em></p>
-</li>
-</ol>
-<h2 id="example-a-led-is-on-for-10-seconds-when-you-depress-a-button-">Example: a LED is On for 10 seconds when you depress a button.</h2>
-<h3 id="top-down-analysis">Top-down analysis</h3>
-<ol>
-<li>What is the algorithm? Is it a simple copy of a button on a LED? Has button action to last for several ms before getting accepted? What happens if button is depressed when LED is on? Is it ignored or it restarts the 10s delay? What happen if the button is blocked depressed?</li>
-<li>How many inputs and outputs do we need? Button is one input plus ground or plus Vcc? Is a pull-up or pull-down required? LED is connected to one output with a serial resistor or LED is shorted?</li>
-<li>Which microcontroller pins can be used, according to current and voltage limitations? Have all pins an optional pull-up resistor?</li>
-</ol>
-<h3 id="bottom-up-programming">Bottom-up programming</h3>
-<ol>
-<li>Defines the wiring and the low-level actions</li>
-<li>Write several test programs to completely understand what has to be executed. Keep the test prograns that will be useful for debugging</li>
-<li>Document the reference program that uses the created .h file, to be used or adapted when similar problems occurs.</li>
-</ol>
-<p><img src="C:\Users\jdn\Desktop\GithubJDN\LibX\SimpleEx.jpg" alt=""></p>
-<h4 id="back-to-our-example-">Back to our example.</h4>
-<ol>
-<li><p>A button is connected to Arduino pin 3, Gnd on other side. LED is connected to pin 13, active low (limiting resistance toward +Vcc).</p>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#define&nbsp;pinBUTTON&nbsp;3&nbsp;&nbsp;//&nbsp;active&nbsp;low</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#define&nbsp;pinLED&nbsp;13&nbsp;&nbsp;//&nbsp;active&nbsp;low</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#define&nbsp;BUTTONdepressed&nbsp;(!digitalRead(bBUTTON))&nbsp;//&nbsp;on&nbsp;if&nbsp;zero</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#define&nbsp;LedOn&nbsp;&nbsp;digitalWrite&nbsp;(bLED,LOW)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#define&nbsp;LedOff&nbsp;digitalWrite&nbsp;(bLED,HIGH)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>void&nbsp;SetupButtonLed&nbsp;()&nbsp;{</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;</span><span class="meta paragraph text"><span>pinMode&nbsp;(pinBUTTON,INPUT);</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;pinMode&nbsp;(pinLED,OUTPUT);</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;digitalWrite&nbsp;(pinBUTTON,HIGH);&nbsp;//&nbsp;pull-up</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>}</span></span></span></div></pre><p>There are rules with C: variables are lower case, functions have a first letter is upper case, constants are all letters upper case. We not alway follow these rules, e.g. we feel LedOn is more readable as LEDON. What is important is to be consistant.<br>If you plan to use AVRstudio or some other IDE, you cannot use these familiar Arduino functions, which have the problem to be very slow and use ten times more memory space. But within definitions, it is acceptable and frequently it is more easy to understand the functionnality. Indeed, it is a question of habit.</p>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#define&nbsp;bBUTTON&nbsp;3&nbsp;&nbsp;//&nbsp;PortD&nbsp;bit&nbsp;3&nbsp;active&nbsp;low</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#define&nbsp;bLED&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;PortB&nbsp;bit&nbsp;5&nbsp;active&nbsp;low</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#define&nbsp;Buttondepressed&nbsp;(PIND&nbsp;&amp;=&nbsp;(1&lt;&lt;bBUTTON))&nbsp;&nbsp;</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span><span class="meta paragraph text"><span>//&nbsp;or&nbsp;bitTest&nbsp;(PIND,bBUTTON)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#define&nbsp;LedOn&nbsp;&nbsp;PORTD&nbsp;|=&nbsp;(1&lt;&lt;bLED)&nbsp;//&nbsp;or&nbsp;bitSet&nbsp;(PORTD,bLED)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#define&nbsp;LedOff&nbsp;digitalWrite&nbsp;(bLED,HIGH)//&nbsp;or&nbsp;bitClear&nbsp;(PORTD,bLED)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>void&nbsp;SetupButtonLed&nbsp;()&nbsp;{</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;</span><span class="meta paragraph text"><span>DDRB&nbsp;&amp;=&nbsp;0b11110111;&nbsp;&nbsp;//&nbsp;bit&nbsp;3&nbsp;button&nbsp;in</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;DDRD&nbsp;|=&nbsp;0b00100000;&nbsp;&nbsp;//&nbsp;bit&nbsp;5&nbsp;led&nbsp;out</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>}</span></span></span></div></pre><p>The definitions depends on the hardware, on your hardware. They can also depends on your habits writing code. If you are not familiar with bits, bytes and logic operations, no problem to use Arduino notations. But within the program digitalWrite and bitSet for pins must not be used for readability and portability reasons.</p>
-</li>
-<li><p>Let us program the simple case, the button triggers the led.</p>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>void&nbsp;loop()&nbsp;{</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;</span><span class="meta paragraph text"><span>while&nbsp;(!BUTTONdepressed)&nbsp;{}&nbsp;//&nbsp;wait</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;LedOn;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;delay&nbsp;(10000);</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;LedOff;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>}</span></span></span></div></pre></li>
-<li><p>Let us create a <code>ButtonLed.h</code> &quot;library&quot;
-Together with the defines and setup, we create a file CopyButton.h and we can include it within programs when we need to see if the button is depressed.</p>
-</li>
-</ol>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>//&nbsp;ButtonLed.h&nbsp;&nbsp;*library&quot;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#define&nbsp;pinBUTTON&nbsp;3&nbsp;&nbsp;//&nbsp;active&nbsp;low</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#define&nbsp;pinLED&nbsp;14&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;active&nbsp;low</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#define&nbsp;BUTTONdepressed&nbsp;digitalRead(bBUTTON)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#define&nbsp;LedOn&nbsp;&nbsp;digitalWrite&nbsp;(bLED,LOW)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#define&nbsp;LedOff&nbsp;digitalWrite&nbsp;(bLED,HIGH)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>void&nbsp;SetupCopyButton&nbsp;()&nbsp;{</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>pinMode&nbsp;(pinBUTTON,INPUT);</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;&nbsp;pinMode&nbsp;(pinLED,OUTPUT);</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>}</span></span></span></div></pre><p>Now a program can include ButtonLed.h and the low level definitions are hidden. Examples for Arduino and AVRstudio are given below.</p>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>//&nbsp;StaircaseTimer.ino&nbsp;&nbsp;for&nbsp;Arduino</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#include&nbsp;ButtonLed.h</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>setup&nbsp;()&nbsp;{</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>SetupButtonLed();</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>}</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>void&nbsp;loop&nbsp;()&nbsp;{</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>while&nbsp;(!BUTTONdepressed)&nbsp;{}&nbsp;//&nbsp;wait</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;&nbsp;&nbsp;LedOn;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;&nbsp;&nbsp;delay&nbsp;(10000);</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;&nbsp;&nbsp;LedOff;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>}</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>//&nbsp;StaircaseTimer.c&nbsp;&nbsp;for&nbsp;AVRstudio</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>#include&nbsp;ButtonLed.h</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>void&nbsp;main&nbsp;()&nbsp;{</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;</span><span class="meta paragraph text"><span>SetupButtonLed();</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;while&nbsp;(1)&nbsp;{</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>while&nbsp;(!BUTTONdepressed)&nbsp;{}&nbsp;//&nbsp;wait</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;&nbsp;&nbsp;LedOn;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;&nbsp;&nbsp;delay&nbsp;(10000);</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;&nbsp;&nbsp;LedOff;&nbsp;</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;</span><span class="meta paragraph text"><span>}</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>}</span></span></span></div></pre><h4 id="see-the-libx-list-to-get-an-idea-what-is-already-proposed-">See the LibX list to get an idea what is already proposed.</h4></body>
-</html>
+```
+#### See the LibX list to get an idea what is already proposed.
