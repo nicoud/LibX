@@ -9,7 +9,7 @@ Continuation of LibX README.md
 
 ## Example: a LED is On for 10 seconds when you depress a button.
 ### Top-down analysis
-1. What is the algorithm? Is it a simple copy of a button on a LED? Has button action to last for several ms before getting accepted? What happens if button is depressed when LED is on? Is it ignored or it restarts the 10s delay? What happen if the button is blocked depressed?
+1. What is the algorithm? Is it a simple copy of a button on a LED? Has button action to last for several ms before getting accepted? What happens if button is depressed when LED is on? Is it ignored or it restarts the 10s delay? What happens if the button is blocked depressed?
 2. How many inputs and outputs do we need? Button is one input plus ground or plus Vcc? Is a pull-up or pull-down required? LED is connected to one output with a serial resistor or LED is shorted?
 3. Which microcontroller pins can be used, according to current and voltage limitations? Have all pins an optional pull-up resistor?
 
@@ -34,7 +34,7 @@ void SetupButtonLed () {
 }
 ```
 There are rules with C: variables are lower case, functions have a first letter is upper case, constants are all letters upper case. We not alway follow these rules, e.g. we feel LedOn is more readable as LEDON. What is important is to be consistant.  
-If you plan to use AVRstudio or some other IDE, you cannot use these familiar Arduino functions, which have the problem to be very slow and use ten times more memory space. But within definitions, it is acceptable and frequently it is more easy to understand the functionnality. Indeed, it is a question of habit.
+If you plan to use AVRstudio or some other IDE, you cannot use these familiar Arduino functions, which have the problem to be very slow and use ten times more memory space. But within definitions, it is acceptable and frequently it is more easy to understand the functionnality. Indeed, it's a question of habit.
 ```
 #define bBUTTON 3  // PortD bit 3 active low
 #define bLED 5     // PortB bit 5 active low

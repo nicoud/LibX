@@ -1,4 +1,4 @@
-## LibX is a set of C/Arduino include files to handle your tasks
+## LibX is a set of C/Arduino include files to handle your tasks. Need to convert to BCD, call a running average function, read a SR05 not using pulseIn(). We have started to document all the functions we use. Simple C, simple to understand, simple to adapt.
 
 #### LibX is like a Meccano. You start with simple constructions, learn from examples, progress toward complexity, and get rewarding results.
 
