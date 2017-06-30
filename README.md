@@ -7,7 +7,7 @@ Great for AtTiny controllers, fast to download on Arduino, also compatible with 
 are small fish in an ocean.
 
 #### LibY may look unusual to Arduino beginners, used to see digitalWrite everywhere in the program.
-Beginners are not encouraged to structure their programs, use definitions and include files to avoid long lists of instructions.
+Beginners are not encouraged to structure their programs and use definitions and include files to avoid long lists of instructions.
 
 #### Let us follow 3 basic rules.
 1. Give explicit name and think "actions* an not "connections". "LedOn" and not "digitaWrite(pin,level)"
