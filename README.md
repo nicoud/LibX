@@ -10,6 +10,6 @@ are small fish in an ocean.
 Beginners are not encouraged to structure their programs and use definitions and include files to avoid long lists of instructions.
 
 #### Let us follow 3 basic rules.
-1. Give explicit name and think "actions* an not "connections". "LedOn" and not "digitaWrite(pin,level)"
+1. Give explicit name and think "actions* and "states". "LedOn" and not "digitaWrite(pin,level)"
 2. Identify the set of required functions and restructure while doing several tests programs
 3. Wrap the definitions, the variables and the functions in a .h reusable file.
